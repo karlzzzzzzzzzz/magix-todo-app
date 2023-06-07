@@ -1,0 +1,7 @@
+{
+     "tmplFolder": "./tmpl",
+     "srcFolder": "./src",
+     "buildFolder": "./build",
+     "port": 5555
+ }
+

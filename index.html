@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Examples</title>
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://unpkg.com/requirejs@2.3.3/require.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var pathBase = './src/'
+            require.config({
+                paths:{
+                    jquery:'https://unpkg.com/jquery@3.1.1/dist/jquery',
+                    magix:'https://unpkg.com/magix@3.2.0/dist/amd/magix-debug',
+                    //注意我们使用的是dist中的amd
+                    app: pathBase + 'app'
+                }
+            });
+
+             // magix为了同时支持jquery和zepto, 在依赖的时候，使用了中性名称$，
+             // 代表jquery或者zepto，具体是使用jquery还是zepto
+             // 需要在这里对使用的框架进行配置才能被正确解析
+             define('$',['jquery'],function($){
+                 return $
+             })
+
+            require(['jquery', 'magix'],function($, Magix){
+                console.log('jquery', $)
+                console.log('magix' , Magix)
+            })
+
+        </script>
+    </body>
+</html>
